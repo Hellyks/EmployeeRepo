@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as empData from "./data/employeeData.json";
+import * as empData from "../data/employeeData.json";
 import {MatTableDataSource} from '@angular/material';
 
 export interface employee{
@@ -25,7 +25,7 @@ export interface address{
 export class ShowEmpDataComponent implements OnInit {
   empData : employee[] = empData["data"];
   dataSource = new MatTableDataSource(this.empData);
-  displayedColumns: Array<string> = ['id', 'name', 'phone', 'city', 'address_line1', 'address_line2', 'postal_code'];
+  displayedColumns: Array<string> = ['id', 'name', 'phone', 'city', 'address_line1', 'address_line2', 'postal_code', 'edit'];
 
   constructor() {
   };

@@ -1,0 +1,19 @@
+.formInput {
+  padding: 10px 10px;
+  margin: 10px 10px;
+  border: none;
+  height: 32px;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.formInput input {
+  display: block;
+  margin-top: 5px;
+}
+
+.alert {
+  font-size: small;
+  color: red;
+  display: inline-flex;
+}

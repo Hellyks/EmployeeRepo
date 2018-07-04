@@ -1,0 +1,57 @@
+<h3>Add Employee Detail</h3>
+<form #empForm="ngForm" (ngSubmit)="saveData()">
+
+  <div class="formInput">
+  <label for="name">Name</label>
+  <input matInput type="text" name="name" id="name" required minlength="4" placeholder="Enter min 4 characters" [(ngModel)]="employeeData.name" #name="ngModel"/>
+    <div
+      *ngIf="name.invalid && (name.dirty || name.touched)"
+      class="alert">
+      <div *ngIf="name.errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="name.errors.minlength">
+        Name must be at least 4 characters long.
+      </div>
+    </div>
+  </div>
+
+  <div class="formInput">
+  <label for="phone">Phone</label>
+  <input matInput type="text" id="phone" name="phone" required pattern="[0-9]+" placeholder="Enter valid phone number" [(ngModel)]="employeeData.phone" #phone="ngModel"/>
+    <div
+      *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+      class="alert">
+      <div *ngIf="phone.errors.required">
+        Phone number is required.
+      </div>
+      <div *ngIf="phone.errors.pattern">
+        Please enter valid phone number.
+      </div>
+    </div>
+  </div>
+
+  <div class="formInput">
+    <label for="city">City</label>
+    <input matInput type="text" id="city" name="city" [(ngModel)]="employeeData.address.city"/>
+  </div>
+
+  <div class="formInput">
+    <label for="address_line1">Address1</label>
+    <input matInput type="text" id="address_line1" name="address_line1" [(ngModel)]="employeeData.address.address_line1"/>
+  </div>
+
+  <div class="formInput">
+    <label for="address_line2">Address2</label>
+    <input matInput type="text" id="address_line2" name="address_line2" [(ngModel)]="employeeData.address.address_line2"/>
+  </div>
+
+  <div class="formInput">
+    <label for="postal_code">Postal code</label>
+    <input matInput type="text" id="postal_code" name="postal_code" [(ngModel)]="employeeData.address.postal_code"/>
+  </div>
+
+  <div class="formInput">
+    <button type="submit" [disabled]="!empForm.form.valid"> Save </button>
+  </div>
+</form>
