@@ -2,8 +2,19 @@ th, td {
   border: 1px solid black;
   padding: 1px 3px;
 }
+
 table{
   width: 100%;
   border: 1px solid black;
   padding: 1px 3px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+}
+
+.searchBox {
+  border: solid;
+  margin: 10px 10px 10px 10px;
+  padding: 5px 5px;
 }

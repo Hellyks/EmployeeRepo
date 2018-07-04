@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as empData from "./data/employeeData.json";
+import {MatTableDataSource} from '@angular/material';
 
 export interface employee{
   id: number;
@@ -22,25 +23,29 @@ export interface address{
 })
 
 export class ShowEmpDataComponent implements OnInit {
+  empData : employee[] = empData["data"];
+  dataSource = new MatTableDataSource(this.empData);
+  displayedColumns: Array<string> = ['id', 'name', 'phone', 'city', 'address_line1', 'address_line2', 'postal_code'];
 
-    empDataList: Array<employee>;
-    displayedColumns: Array<string>;
-
-    constructor(){
-      this.displayedColumns = ['id', 'name', 'phone', 'city', 'address_line1', 'address_line2', 'postal_code'];
-      this.empDataList = empData["data"];
-    };
+  constructor() {
+  };
 
   ngOnInit() {
+    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      return data.name.toLowerCase().includes(filter) || data.address.city.toLowerCase().includes(filter);
+    };
   }
 
-  checkPhoneNumber(element:employee){
-    debugger;
-    if(isNaN(Number(element.phone))){
+  checkPhoneNumber(element: employee) {
+    if (isNaN(Number(element.phone))) {
       element.phone = "NA";
       return true;
-    }else{
+    } else {
       return true;
     }
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
